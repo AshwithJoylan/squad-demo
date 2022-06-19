@@ -1,5 +1,6 @@
 import { createTheme, ThemeOptions } from '@mui/material';
 
+const font = 'Inter';
 export const themeOptions: ThemeOptions = {
   palette: {
     primary: {
@@ -10,7 +11,7 @@ export const themeOptions: ThemeOptions = {
     },
     background: {
       paper: '#ffffff',
-      default: '#f5f5f5',
+      default: '#F5F5F5',
     },
     text: {
       secondary: '#757575',
@@ -20,9 +21,10 @@ export const themeOptions: ThemeOptions = {
   },
   typography: {
     fontFamily: 'Inter',
-    fontSize: 16,
-    fontWeightLight: 300,
-    htmlFontSize: 20,
+    fontSize: 10,
+    body1: {
+      fontSize: 10,
+    },
   },
   shape: {
     borderRadius: 12,
@@ -36,8 +38,29 @@ export const themeOptions: ThemeOptions = {
         },
       },
     },
+    MuiTypography: {
+      defaultProps: {
+        fontFamily: font,
+      },
+    },
+    MuiCardHeader: {
+      styleOverrides: {
+        root: {
+          padding: '12px',
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          boxShadow:
+            '0px 0px 0px rgba(48, 49, 51, 0.04), 0px 4px 8px rgba(48, 49, 51, 0.08)',
+          borderRadius: '8px',
+        },
+      },
+    },
   },
-  spacing: 8,
+  spacing: 12,
 };
 
 const theme = createTheme(themeOptions);

@@ -1,11 +1,8 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import type { FC } from 'react';
 import { useSelector } from 'react-redux';
 import MUIDrawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -16,7 +13,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { dispatch } from '../store';
 import { drawerOpenSelector, toggleDrawer } from '../store/features/drawer';
 import NavItem from './NavItem';
-// import ListItemIcon from '@mui/material/ListItemIcon';
 
 /**
  * DrawerProps
@@ -26,7 +22,7 @@ type DrawerProps = {
   window?: Window;
 };
 
-const drawerWidth = 300;
+const drawerWidth = 250;
 
 const Header = () => {
   const handleDrawerToggle = useCallback(() => {
@@ -108,7 +104,7 @@ const Drawer: FC<DrawerProps> = ({ children, window }) => {
   );
   console.log('Drawer');
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', backgroundColor: '#F5F5F5' }}>
       <CssBaseline />
       <Box
         component='nav'
@@ -135,7 +131,10 @@ const Drawer: FC<DrawerProps> = ({ children, window }) => {
         component='main'
         sx={{
           flexGrow: 1,
-          p: 3,
+          height: '100vh',
+          p: 1,
+          backgroundColor: '#F5F5F5',
+          flexDirection: 'column',
           paddingTop: { xs: '60px', sm: '80px', md: '20px' },
           width: { xs: `calc(100% - ${drawerWidth}px)` },
         }}

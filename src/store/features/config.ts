@@ -3,7 +3,7 @@ const BASE_URL = 'https://mockend.com/nillion/frontend-challenge/';
 const EndPoints = {
   JOBS: 'jobs',
   ANNOUNCEMENTS: 'announcements',
-  RESOURCES: 'resources',
+  ARTICLES: 'articles',
 };
 
 export type MyResponse = {

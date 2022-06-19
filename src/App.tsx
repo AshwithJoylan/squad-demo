@@ -1,14 +1,14 @@
-import { Suspense } from 'react';
+import { memo, Suspense } from 'react';
 import type { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import ThemeProvider from '@mui/styles/ThemeProvider';
-import StyledEngineProvider from '@mui/material/StyledEngineProvider';
 import './App.css';
 import logo from './logo.svg';
 import Home from './screens/Home';
 import Drawer from './components/Drawer';
 import theme from './theme';
+import Box from '@mui/material/Box';
 
 const Center: FC<{ children: any }> = ({ children }) => {
   return (
@@ -35,25 +35,25 @@ const Loader = () => {
   );
 };
 
-const MyApp = () => {
-  return (
-    <Drawer>
-      <CssBaseline />
-      <Routes>
-        <Route path='/' element={<Home />} />
-      </Routes>
-    </Drawer>
-  );
-};
-
+const MyApp = memo(
+  () => {
+    return (
+      <Drawer>
+        <Routes>
+          <Route path='/' element={<Home />} />
+        </Routes>
+      </Drawer>
+    );
+  },
+  () => true
+);
 export default function App() {
   return (
-    <Suspense fallback={<Loader />}>
-      <StyledEngineProvider injectFirst>
-        <ThemeProvider theme={theme}>
-          <MyApp />
-        </ThemeProvider>
-      </StyledEngineProvider>
-    </Suspense>
+    <ThemeProvider theme={theme}>
+      <Suspense fallback={<Loader />}>
+        <CssBaseline />
+        <MyApp />
+      </Suspense>
+    </ThemeProvider>
   );
 }
